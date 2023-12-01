@@ -68,9 +68,11 @@
           "items": {
             "type": "string",
             "enum": [
+              "EnsureDayExists",
               "EnsureYearExists",
               "SetDay",
-              "StartDay"
+              "StartDay",
+              "TemplateProgram"
             ]
           }
         },
@@ -80,9 +82,11 @@
           "items": {
             "type": "string",
             "enum": [
+              "EnsureDayExists",
               "EnsureYearExists",
               "SetDay",
-              "StartDay"
+              "StartDay",
+              "TemplateProgram"
             ]
           }
         },
