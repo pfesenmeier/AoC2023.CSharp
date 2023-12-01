@@ -15,7 +15,7 @@ class Build : NukeBuild
 {
     public static int Main() => Execute<Build>();
 
-    readonly string DaysDir = "Days";
+    readonly AbsolutePath AdventCalendars = RootDirectory / "AdventCalendars";
 
     [PathVariable]
     readonly Tool DotNet;
@@ -26,26 +26,27 @@ class Build : NukeBuild
     [Parameter("Year")]
     readonly int Year = 2023;
 
+    AbsolutePath YearPath() => AdventCalendars / Year.ToString();
+
     Target SetDay => _ => _
-        .DependsOn(EnsureDaysExists)
+        .DependsOn(EnsureYearExists)
         .OnlyWhenDynamic(() => Day is null)
         .Executes(() =>
     {
-        var currentYear = RootDirectory / Year.ToString();
+        var fileNames = YearPath().GetFiles().Select(file => file.Name).Select(name => int.Parse(name));
 
-        var fileNames = currentYear.GetFiles().Select(file => file.Name).Select(name => int.Parse(name));
-
-        Day = fileNames.Count() is 0 ? 0 : fileNames.Max() + 1;
+        Day = fileNames.Count() is 0 ? 1 : fileNames.Max() + 1;
     });
 
-    Target EnsureDaysExists => _ => _
-        .Executes(() => (RootDirectory / DaysDir).CreateDirectory());
+    Target EnsureYearExists => _ => _
+        .Executes(() => (AdventCalendars / Year.ToString()).CreateDirectory());
+
 
     Target StartDay => _ => _
         .DependsOn(SetDay)
         .Executes(() =>
         {
-            var projectDirectory = RootDirectory / DaysDir / Year.ToString() / Day.ToString();
+            var projectDirectory = AdventCalendars / Year.ToString() / Day.ToString();
             projectDirectory.CreateDirectory();
 
             var srcDir = projectDirectory / "src";

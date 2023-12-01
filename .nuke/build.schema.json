@@ -68,7 +68,7 @@
           "items": {
             "type": "string",
             "enum": [
-              "EnsureDaysExists",
+              "EnsureYearExists",
               "SetDay",
               "StartDay"
             ]
@@ -80,7 +80,7 @@
           "items": {
             "type": "string",
             "enum": [
-              "EnsureDaysExists",
+              "EnsureYearExists",
               "SetDay",
               "StartDay"
             ]
