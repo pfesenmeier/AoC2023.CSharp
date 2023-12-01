@@ -68,20 +68,18 @@ Console.WriteLine(Part2(puzzleInput));
         .OnlyWhenDynamic(() => Day is null)
         .Executes(() =>
     {
-        var fileNames = AdventCalendars.GetDirectories().Select(file => file.Name).Select(name =>
-        {
-            if (int.TryParse(string.Join("", name.TakeLast(2)), out var result))
+        Day = AdventCalendars.GetDirectories().Count() is 0
+            ? 1
+            : AdventCalendars.GetDirectories().Select(file => file.Name).Max(name =>
             {
-                return result;
-            }
-            else
-            {
+                if (int.TryParse(string.Join("", name.TakeLast(2)), out var result))
+                {
+                    return result;
+                }
                 // skip test projects
                 return -1;
-            }
-        });
+            }) + 1;
 
-        Day = fileNames.Count() is 0 ? 1 : fileNames.Max() + 1;
         Log.Information($"Setting up Day {Day}");
     });
 
