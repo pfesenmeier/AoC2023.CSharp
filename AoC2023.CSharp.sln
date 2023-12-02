@@ -5,16 +5,32 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{D6803D2F-E5CB-4F28-88C3-C50EE6C00435}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventCalendars", "AdventCalendars", "{E5D210B7-37A3-42A6-8518-2111835215C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2023.01", "AdventCalendars\AoC2023.01\AoC2023.01.csproj", "{AD923BAA-A2DD-45C5-9DA9-879AED4D3F3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2023.01.Test", "AdventCalendars\AoC2023.01.Test\AoC2023.01.Test.csproj", "{75D5C633-8BE7-4378-889F-EFA0D2F51418}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD923BAA-A2DD-45C5-9DA9-879AED4D3F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD923BAA-A2DD-45C5-9DA9-879AED4D3F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD923BAA-A2DD-45C5-9DA9-879AED4D3F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD923BAA-A2DD-45C5-9DA9-879AED4D3F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D5C633-8BE7-4378-889F-EFA0D2F51418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D5C633-8BE7-4378-889F-EFA0D2F51418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D5C633-8BE7-4378-889F-EFA0D2F51418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D5C633-8BE7-4378-889F-EFA0D2F51418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{AD923BAA-A2DD-45C5-9DA9-879AED4D3F3C} = {E5D210B7-37A3-42A6-8518-2111835215C5}
+		{75D5C633-8BE7-4378-889F-EFA0D2F51418} = {E5D210B7-37A3-42A6-8518-2111835215C5}
 	EndGlobalSection
 EndGlobal
