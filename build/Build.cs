@@ -49,15 +49,16 @@ Solution Part2 = (string input) =>
     return "TODO";
 };
 
-Console.WriteLine("Part 1 Sample");
-Console.WriteLine(Part1(sampleInput));
-Console.WriteLine("Part 1 Solution");
-Console.WriteLine(Part1(puzzleInput));
+Func<string> main = args switch
+{
+["-1s"] => () => Part1(sampleInput),
+["-1i"] => () => Part1(puzzleInput),
+["-2s"] => () => Part2(sampleInput),
+["-2i"] => () => Part2(puzzleInput),
+    _ => () => Part1(sampleInput)
+};
 
-Console.WriteLine("Part 2 Sample");
-Console.WriteLine(Part2(sampleInput));
-Console.WriteLine("Part 2 Solution");
-Console.WriteLine(Part2(puzzleInput));
+Console.WriteLine(main());
 """;
 
     Target EnsureAdventCalendarsExist => _ => _
