@@ -31,21 +31,24 @@ class Build : NukeBuild
     readonly int Year = 2023;
 
     string ProgramTemplate() => $$"""
+using Dumpify;
 using Solution = System.Func<string, string>;
 
-string projectDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Code\Aoc2023.CSharp\{{RootDirectory.GetRelativePathTo(ProjectPath)}}";
-string sampleInput = projectDir + @"\sample.txt"; 
+string projectDir =
+    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+    + @"\Code\Aoc2023.CSharp\{{RootDirectory.GetRelativePathTo(ProjectPath)}}";
+string sampleInput = projectDir + @"\sample.txt";
 string puzzleInput = projectDir + @"\input.txt";
 
-Solution Part1 = (string input) => 
+Solution Part1 = (string input) =>
 {
-    var lines = File.ReadAllLines(input);
+    var lines = File.ReadAllLines(input).Dump();
     return "TODO";
 };
 
-Solution Part2 = (string input) => 
+Solution Part2 = (string input) =>
 {
-    var lines = File.ReadAllLines(input);
+    var lines = File.ReadAllLines(input).Dump();
     return "TODO";
 };
 
@@ -55,7 +58,7 @@ Func<string> main = args switch
 ["-1i"] => () => Part1(puzzleInput),
 ["-2s"] => () => Part2(sampleInput),
 ["-2i"] => () => Part2(puzzleInput),
-    _ => () => Part1(sampleInput)
+    _ => () => "Usage: dotnet run -[1,2][i,s]. s for sample, i for input"
 };
 
 Console.WriteLine(main());
@@ -91,6 +94,7 @@ Console.WriteLine(main());
             var srcDir = ProjectPath;
             var testDir = AdventCalendars / $"{ProjectName}.Test";
             DotNet($"new console -o {srcDir}");
+            DotNet($"add {srcDir} package Dumpify");
             DotNet($"new xunit -o {testDir}");
             DotNet($"add {testDir} reference {srcDir}");
             DotNet($"sln add {srcDir}");
